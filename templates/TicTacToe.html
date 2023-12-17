@@ -1,0 +1,287 @@
+{{ define "TicTacToe" }}
+
+{{ template "header" }}
+
+
+  <header data-bs-theme="dark">
+    <div class="collapse text-bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4>About</h4>
+            <p class="text-body-secondary">Tic-Tac-Toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players who take turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. <a href="https://en.wikipedia.org/wiki/Tic-tac-toe">Wikipedia</a></p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4>Contact me</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://www.linkedin.com/in/vladislavs-potapkins-346744294/" class="text-white">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong>Tic-Tac-Toe</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+    </header>
+
+      <br><br>
+
+    <style>
+
+      BODY {
+          background: white;
+         }
+       TABLE {
+          table-layout: fixed;
+          width: 600px;
+          height: 600px;
+          border-collapse: collapse;
+          border: 10px solid white;
+       }
+       TD, TH {
+         table-layout: fixed;
+         border: 9px solid grey;
+         text-align: center;
+       }
+      </style>
+
+    <form action="/turn/" method="post">
+
+      <table align="center"  >
+        <tr>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="1"/>
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="11" hidden="true"  height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="12" value="1" hidden="true" height="70" width="70" />
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="2" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="21" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="22" hidden="true" height="70" width="70" />
+
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="3" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="31" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="32" hidden="true" height="70" width="70" />
+
+          </td>
+        </tr>
+
+        <tr>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="4" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="41" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="42" hidden="true" height="70" width="70" />
+
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="5" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="51" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="52" hidden="true" height="70" width="70" />
+
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="6" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="61" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="62" hidden="true" height="70" width="70" />
+
+          </td>
+        </tr>
+
+        <tr>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="7" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="71" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="72" hidden="true" height="70" width="70" />
+
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="8" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="81" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="82" hidden="true" height="70" width="70" />
+
+          </td>
+          <td align="center" height="80">
+            <input type="button" class="btn btn-warning" id="9" />
+            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbI_SBStAK1SYgw59XwwuMS7j97wfk_mgY7BVteHbAGBEGyexdqHdiuvEYqJSvEPNwdmk&usqp=CAU" id="91" hidden="true" height="70" width="70" />
+            <img  src="https://mariaeugeniamanrique.files.wordpress.com/2013/02/enso107.jpg" id="92" hidden="true" height="70" width="70" />
+
+          </td>
+        </tr>
+
+        <script type="text/javascript" >
+
+          let i = 0;
+          let arr = [0,0,0,0,0,0,0,0,0]
+
+
+          function result(){
+            if (arr[0]===arr[1] && arr[0]===arr[2] && arr[0] !== 0) { if (arr[0]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[0]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[3]===arr[4] && arr[3]===arr[5] && arr[3] !== 0) { if (arr[3]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[3]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[6]===arr[7] && arr[6]===arr[8] && arr[6] !== 0) { if (arr[6]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[6]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[0]===arr[3] && arr[0]===arr[6] && arr[0] !== 0) { if (arr[0]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[0]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[1]===arr[4] && arr[1]===arr[7] && arr[1] !== 0) { if (arr[1]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[1]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[2]===arr[5] && arr[2]===arr[8] && arr[2] !== 0) { if (arr[2]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[2]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[0]===arr[4] && arr[0]===arr[8] && arr[0] !== 0) { if (arr[0]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[0]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (arr[2]===arr[4] && arr[2]===arr[6] && arr[2] !== 0) { if (arr[2]===1){alert ( "Player 1 Wins!");alert("Game Over!!!");} else if (arr[2]===2){alert ( "Player 2 Wins!");alert("Game Over!!!");}}
+            if (i>7) {alert("Game Over!!!")}
+          }
+
+          document.getElementById('1').onclick = function() {
+            document.getElementById('1').hidden = true;
+            if (i%2===0){
+              document.getElementById('11').hidden = false;
+              arr[0] = 1;
+              result();
+            } else {
+              document.getElementById('12').hidden = false;
+              arr[0] = 2;
+              result();
+            }
+            i++;
+          }
+
+          document.getElementById('2').onclick = function() {
+            document.getElementById('2').hidden = true;
+            if (i%2===0){
+              document.getElementById('21').hidden = false;
+              arr[1] = 1;
+              result();
+            } else {
+              document.getElementById('22').hidden = false;
+              arr[1] = 2;
+              result();
+            }
+            i++;
+          }
+
+          document.getElementById('3').onclick = function() {
+            document.getElementById('3').hidden = true;
+            if (i%2===0){
+              document.getElementById('31').hidden = false;
+              arr[2] = 1;
+              result();
+            } else {
+              document.getElementById('32').hidden = false;
+              arr[2] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('4').onclick = function() {
+            document.getElementById('4').hidden = true;
+            if (i%2===0){
+              document.getElementById('41').hidden = false;
+              arr[3] = 1;
+              result();
+            } else {
+              document.getElementById('42').hidden = false;
+              arr[3] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('5').onclick = function() {
+            document.getElementById('5').hidden = true;
+            if (i%2===0){
+              document.getElementById('51').hidden = false;
+              arr[4] = 1;
+              result();
+            } else {
+              document.getElementById('52').hidden = false;
+              arr[4] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('6').onclick = function() {
+            document.getElementById('6').hidden = true;
+            if (i%2===0){
+              document.getElementById('61').hidden = false;
+              arr[5] = 1;
+              result();
+            } else {
+              document.getElementById('62').hidden = false;
+              arr[5] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('7').onclick = function() {
+            document.getElementById('7').hidden = true;
+            if (i%2===0){
+              document.getElementById('71').hidden = false;
+              arr[6] = 1;
+              result();
+            } else {
+              document.getElementById('72').hidden = false;
+              arr[6] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('8').onclick = function() {
+            document.getElementById('8').hidden = true;
+            if (i%2===0){
+              document.getElementById('81').hidden = false;
+              arr[7] = 1;
+              result();
+            } else {
+              document.getElementById('82').hidden = false;
+              arr[7] = 2;
+              result();
+            }
+            i++;    }
+
+          document.getElementById('9').onclick = function() {
+            document.getElementById('9').hidden = true;
+            if (i%2===0){
+              document.getElementById('91').hidden = false;
+              arr[8] = 1;
+              result();
+            } else {
+              document.getElementById('92').hidden = false;
+              arr[8] = 2;
+              result();
+            }
+
+            i++;    }
+
+
+        </script>
+
+      </table>
+
+      </form>
+
+
+    <footer class="text-body-secondary py-5">
+      <div class="container">
+
+        <p class="text-center mb-1">
+          <a type="button" type="button" class="btn btn-outline-secondary" href="/Tic-Tac-Toe/">Reset</a>
+        </p>
+
+        <p class="float-end mb-1">
+          <a type="button" type="button" class="btn btn-outline-secondary" href="/">Back to main page</a>
+        </p>
+        <p class="mb-1"></p>
+        <p class="mb-0"> <a href="/"></a>  <a href="../getting-started/introduction/"></a> </p>
+      </div>
+    </footer>
+    <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        </body>
+    </html>
+
+
+{{ end }}

@@ -1,0 +1,39 @@
+{{ define "show" }}
+
+{{ template "header"}}
+
+<header data-bs-theme="dark">
+
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>{{.Title }}</strong><br>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main role="main" class="inner cover">
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+    <h3 class="cover-heading"> {{ .Anons }} </h3>
+    <p class="lead"> {{ .Full_text }}</p> <br>
+            <p class="lead">  by {{ .Author }}</p> <br>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a type="button" type="button" class="btn btn-outline-secondary" href="/articles/">Back to articles</a>
+        </p>
+    </div>
+</footer>
+<script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+{{ end }}

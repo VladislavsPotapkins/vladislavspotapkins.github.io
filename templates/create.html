@@ -1,0 +1,48 @@
+{{ define "create" }}
+
+{{ template "header"}}
+
+<header data-bs-theme="dark">
+
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>Article adding</strong>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main role="main" class="inner cover">
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+<br>
+    <form action="/articles/create/save_article/" method="post">
+        <input type="text" name="title" id="title"
+               placeholder="Enter articles title"
+               class="form-control"><br>
+        <textarea name="image" id="image" class="form-control"
+                  placeholder="Enter URL to image"></textarea><br>
+        <textarea name="anons" id="anons" class="form-control"
+                  placeholder="Enter articles anons"></textarea><br>
+        <textarea name="full_text" id="full_text" class="form-control"
+                  placeholder="Enter articles text"></textarea><br>
+        <button class="btn btn-warning">Add</button>
+    </form>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a type="button" type="button" class="btn btn-outline-secondary" href="/articles/">Back to articles</a>
+        </p>
+    </div>
+</footer>
+<script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+{{ end }}
